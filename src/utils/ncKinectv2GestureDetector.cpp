@@ -46,7 +46,12 @@ ncKinectv2GestureDetector::ncKinectv2GestureDetector(IKinectSensor* _sensor, int
 		const UINT uTextLength = 260;
 		wchar_t sName[uTextLength];
 		gestures[i]->get_Name(uTextLength, sName);
-		wcout << "loaded gesture: "<<sName <<" for detector "<<id << endl;
+
+		wstring ws(sName);
+		string str(ws.begin(), ws.end());
+		gesture_names.push_back( str );
+		
+		wcout << "loaded gesture: " << sName  << " for detector " << id << endl;
 	}
 }
 

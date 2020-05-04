@@ -136,8 +136,6 @@ bool ncKinectv2Core::initKinectGestures(DWORD enabledFrameSourceTypes, string da
 		for (int i = 0; i < BODY_COUNT; ++i) {
 			ncKinectv2GestureDetector * detector = new ncKinectv2GestureDetector(sensor, i, database);
 			gesturedetectors.push_back(detector);
-
-			
 		}
 		return true;
 	}
@@ -504,6 +502,11 @@ void ncKinectv2Core::updatesepbodyindexmap(bool _colorpointcloud, bool _coloruse
 /******************************/
 /*GETTERS                     */
 /******************************/
+#ifdef GESTURES
+ncKinectv2GestureDetector* ncKinectv2Core::getGestureDetector(int userid) {
+	return gesturedetectors[userid];
+}
+#endif
 
 ofVec4f ncKinectv2Core::getFloorPlane()
 {

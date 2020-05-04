@@ -20,8 +20,10 @@ public:
 
 #ifdef GESTURES
 	void setup(string database, bool _usecolor = false);
-	void turnOffGestureDectors();
+	void turnOffGestureDectors(); 
 	void turnOnGestureDetectorForUser(int userid, UINT64 kinectid);
+
+	ncKinectv2GestureDetector* getGestureDetector(int userid = 0);
 #endif
 
 	void setup(bool _usecolor = false);

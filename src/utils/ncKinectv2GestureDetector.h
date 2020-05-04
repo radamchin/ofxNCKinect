@@ -19,6 +19,13 @@ public:
 	bool getPaused();
 	void setPaused(bool _paused);
 
+	int getGestureCount() {
+		return numberofgestures;
+	}
+
+	string getGestureName(int index) {
+		return gesture_names[index];
+	}
 
 private:
 	IKinectSensor* sensor;
@@ -26,6 +33,7 @@ private:
 	IVisualGestureBuilderFrameReader	*	frameReader;
 	IVisualGestureBuilderFrameSource	*	frameSource;
 	vector<IGesture *>  gestures;
+	vector<std::string> gesture_names;
 	UINT numberofgestures;
 	int id;
 };
