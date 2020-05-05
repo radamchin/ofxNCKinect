@@ -242,6 +242,10 @@ void ncKinectv2Core::getBodyData(IMultiSourceFrame* frame) {
 	//GET JOINT DATA
 	IBody* bodies[BODY_COUNT] = { 0 };
 
+#ifdef GESTURES
+	bool update_gestures = gesturedetectors.size() > 0;
+#endif
+
 	if (SUCCEEDED(bodyframe->GetAndRefreshBodyData(BODY_COUNT, bodies))) {
 
 		//FIRST LOOP THROUGH TRACKED USER AND DO USER MANAGEMENT
@@ -249,7 +253,7 @@ void ncKinectv2Core::getBodyData(IMultiSourceFrame* frame) {
 		for (int i = 0; i < BODY_COUNT; i++) {
 
 #ifdef GESTURES
-			gesturedetectors[i]->update();
+			if(update_gestures) gesturedetectors[i]->update();
 #endif
 
 			BOOLEAN tracked;
